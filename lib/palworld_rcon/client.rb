@@ -30,6 +30,22 @@ module PalworldRcon
       execute_command("ShowPlayers")
     end
 
+    def shutdown(count_down, message)
+      execute_command("Shutdown #{count_down} #{message}")
+    end
+
+    def save
+      execute_command("Save")
+    end
+
+    def server_info
+      execute_command("Info")
+    end
+
+    def do_exit
+      execute_command("DoExit")
+    end
+
     private
 
     def execute_command(cmd)

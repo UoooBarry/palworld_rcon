@@ -2,7 +2,7 @@
 
 require_relative "palworld_rcon/version"
 require_relative "palworld_rcon/client"
+require_relative "palworld_rcon/error"
 
-module PalworldRcon
-  class Error < StandardError; end
-end
+# Module
+module PalworldRcon; end

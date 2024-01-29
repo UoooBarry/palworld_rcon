@@ -12,24 +12,30 @@ module PalworldRcon
 
     def broadcast(message)
       cmd = "Broadcast #{message}"
-      rcon_client.execute(cmd)
+      execute_command(cmd)
     end
 
     def kick_player(player_id)
       cmd = "KickPlayer #{player_id}"
-      rcon_client.execute(cmd)
+      execute_command(cmd)
     end
 
     def ban_player(player_id)
       cmd = "BanPlayer #{player_id}"
-      rcon_client.execute(cmd)
+      execute_command(cmd)
     end
 
     def show_players
-      rcon_client.execute("ShowPlayers")
+      execute_command("ShowPlayers")
     end
 
     private
+
+    def execute_command(cmd)
+      rcon_client.execute(cmd)
+    rescue StandardError => e
+      raise ExectueCommandError, e.message
+    end
 
     attr_reader :rcon_client
   end

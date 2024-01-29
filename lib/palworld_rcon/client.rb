@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "rcon"
+require_relative "response"
 
 module PalworldRcon
   # Client
@@ -32,7 +33,7 @@ module PalworldRcon
     private
 
     def execute_command(cmd)
-      rcon_client.execute(cmd)
+      Response.new(rcon_client.execute(cmd))
     rescue StandardError => e
       raise ExectueCommandError, e.message
     end

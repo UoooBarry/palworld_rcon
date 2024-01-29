@@ -8,7 +8,7 @@ module PalworldRcon
     end
 
     def body
-      rcon_response
+      rcon_response.body
     end
 
     private

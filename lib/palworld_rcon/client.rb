@@ -12,7 +12,7 @@ module PalworldRcon
     end
 
     def broadcast(message)
-      cmd = "Broadcast #{message}"
+      cmd = "Broadcast #{process_message(message)}"
       execute_command(cmd)
     end
 
@@ -31,7 +31,7 @@ module PalworldRcon
     end
 
     def shutdown(count_down, message)
-      execute_command("Shutdown #{count_down} #{message}")
+      execute_command("Shutdown #{count_down} #{process_message(message)}")
     end
 
     def save
@@ -52,6 +52,10 @@ module PalworldRcon
       Response.new(rcon_client.execute(cmd))
     rescue StandardError => e
       raise ExectueCommandError, e.message
+    end
+
+    def process_message(message)
+      message.gsub(" ", "_")
     end
 
     attr_reader :rcon_client
